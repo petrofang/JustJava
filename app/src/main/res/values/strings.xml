@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">gU wallet ver. 0.0.00001</string>
+    <string name="price_message">Unit purchase: gU.</string>
 </resources>
