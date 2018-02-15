@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 /**
@@ -34,33 +35,52 @@ public class MainActivity extends AppCompatActivity {
         displayMessage(orderSummary);
     }
 
-    public String createOrderSummary(int price) {
-        String orderSummary
-                = "Name: " + "g-User #000023\n"
-                + "Quantity: " + quantity + "\n"
-                + "Total: " + price + "\n"
-                + "Thank you";
-        return orderSummary;
+    /**
+     * Creates a string fragment base on Option 1 selection
+     *
+     * @return a string fragment to add to the order summary
+     */
+    private String option1Summary() {
+        CheckBox checkBox = findViewById(R.id.cbOption1);
+        boolean option1 = checkBox.isChecked();
+        if (option1) {
+            return "Bronze level investment\n";
+        } else return "";
     }
 
     /**
-     * learning about methods
+     * Assembles the text to fill the String of the order summary
+     *
+     * @param subTotal the total price as previously calculated
+     * @return the String with the complete order summary
+     */
+    public String createOrderSummary(int subTotal) {
+        String option1Summary = option1Summary();
+        return "Name: " + "g-User #000023\n"
+                + option1Summary
+                + "Quantity: " + quantity + "\n"
+                + "Total: " + subTotal + "\n"
+                + "Thank you";
+    }
+
+    /**
+     * Overloading the method...
      *
      * @param howMany is the number being ordered
      * @param howMuch is the price per unit
+     * @return sum total
      */
     private int calculatePrice(int howMany, int howMuch) {
         return howMuch * howMany;
     }
 
     private int calculatePrice(int howMany) {
-        return pricePer * howMany;
+        return howMany * pricePer;
     }
 
     private int calculatePrice() {
         return pricePer * quantity;
     }
-
 
     /**
      * This method displays the given quantity value on the screen.
@@ -78,13 +98,17 @@ public class MainActivity extends AppCompatActivity {
         OrderSummaryTextView.setText(message);
     }
 
-    // when plus is clicked
+    /**
+     * when plus is clicked
+     */
     public void increment(View view) {
         ++quantity;
         displayQuantity(quantity);
     }
 
-    // when minus is clicked
+    /**
+     * when minus is clicked
+     */
     public void decrement(View view) {
         if (quantity != 0) {
             quantity--;
