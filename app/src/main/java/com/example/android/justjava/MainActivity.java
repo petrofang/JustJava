@@ -49,16 +49,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * Creates a string fragment base on Option 2 selection
+     *
+     * @return a string fragment to add to the order summary
+     */
+    private String option2Summary() {
+        CheckBox checkBox = findViewById(R.id.cbOption2);
+        boolean option2 = checkBox.isChecked();
+        if (option2) {
+            return "Investor Package selected! Dividend > 4% APY\n";
+        } else return "";
+    }
+
+
+    /**
      * Assembles the text to fill the String of the order summary
      *
      * @param subTotal the total price as previously calculated
      * @return the String with the complete order summary
      */
     public String createOrderSummary(int subTotal) {
-        String option1Summary = option1Summary();
         return "Name: " + "g-User #000023\n"
-                + option1Summary
+                + option2Summary()
                 + "Quantity: " + quantity + "\n"
+                + option1Summary()
                 + "Total: " + subTotal + "\n"
                 + "Thank you";
     }
