@@ -64,22 +64,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Overloading the method...
+     * This is mostly unnecessary because these args are global variables
      *
-     * @param howMany is the number being ordered
-     * @param howMuch is the price per unit
-     * @return sum total
+     * @param howMany   the quantity being ordered
+     * @param howMuch   the price per each unit
+     * @return (int) sum total of calculated price
      */
     private int calculatePrice(int howMany, int howMuch) {
         return howMuch * howMany;
-    }
-
-    private int calculatePrice(int howMany) {
-        return howMany * pricePer;
-    }
-
-    private int calculatePrice() {
-        return pricePer * quantity;
     }
 
     /**
