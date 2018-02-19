@@ -3,14 +3,14 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
- * This app displays an order form to order coffee.
+ * This app displays an order form to buy g-UNIT
  */
 public class MainActivity extends AppCompatActivity {
     /**
@@ -147,8 +147,12 @@ boolean option1;
      * when plus is clicked
      */
     public void increment(View view) {
-        ++quantity;
-        displayQuantity(quantity);
+        if (quantity <= 100) {
+            ++quantity;
+            displayQuantity(quantity);
+        } else {
+            Toast.makeText(this, "Current Max: 100 gUnit", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -159,8 +163,7 @@ boolean option1;
             quantity--;
             displayQuantity(quantity);
         } else {
-            // WTF?
-            Log.wtf("decrement", "This isn't even possible!");
+            Toast.makeText(this, "gUnit sales are locked (no inversion)", Toast.LENGTH_SHORT).show();
         }
     }
 
