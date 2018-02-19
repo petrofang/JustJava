@@ -6,16 +6,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
  * This app displays an order form to order coffee.
  */
-
-
 public class MainActivity extends AppCompatActivity {
+    /**
+     * TODO:    fold these global vars into the submitOrder method and pass args to other methods
+     * or should I? Do global variables use less memory than passing
+     * them from method to method in Java?  Alternatively:
+     * TODO:    clean up child methods and remove args; use global variables exclusively,
+     */
     int quantity = 0;
     int pricePer = 5;
+//  final int XEM_PRICE_FACTOR = 1;
+boolean option1;
+    boolean option2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,29 +36,65 @@ public class MainActivity extends AppCompatActivity {
     //  protected void onPause(){};
 
     /**
-     * This method is called when the order button is clicked.
+     * when the Order button is clicked...
+     *      do the math
+     *      build the string using the math
+     *      display the string
+     *
+     * @param view the view that called it, I think? the Order button?
      */
     public void submitOrder(View view) {
-        int total = calculatePrice(quantity, pricePer);
-        String orderSummary = createOrderSummary(total);
+        /*  */
+        CheckBox checkBox = findViewById(R.id.cbOption1);
+        option1 = checkBox.isChecked();
+        checkBox = findViewById(R.id.cbOption2);
+        option2 = checkBox.isChecked();
+
+        int subTotal = calculatePrice(quantity, pricePer);
+        String orderSummary = createOrderSummary(subTotal);
         displayMessage(orderSummary);
     }
 
+
     /**
-     * Creates a string fragment base on Option 1 selection
+     * Assembles the text to fill the String of the order summary
+     *
+     * @param subTotal the total price as previously calculated
+     * @return the String with the complete order summary
+     */
+    public String createOrderSummary(int subTotal) {
+        return nameSummary()
+                + option2Summary()
+                + quantity + " Coin generated.." + "\n"
+                + option1Summary()
+                + "Total: " + subTotal + " XEM\n"
+                + "Thank you";
+    }
+
+    /**
+     * Creates a string fragment based on Option 1 selection
      *
      * @return a string fragment to add to the order summary
      */
     private String option1Summary() {
-        CheckBox checkBox = findViewById(R.id.cbOption1);
-        boolean option1 = checkBox.isChecked();
         if (option1) {
-            return "Bronze level investment\n";
-        } else return "";
+            return "form factor: Bronzed coins\n";
+        } else return "form factor: Wooden coins\n";
     }
 
     /**
-     * Creates a string fragment base on Option 2 selection
+     * Create a string fragment based on the name
+     *
+     * @return string fragment to add to order summary
+     */
+    private String nameSummary() {
+        EditText editText = findViewById(R.id.etName);
+        String name = editText.getText().toString();
+        return "Name: " + name + "\n";
+    }
+
+    /**
+     * Creates a string fragment based on Option 2 selection
      *
      * @return a string fragment to add to the order summary
      */
@@ -61,31 +106,25 @@ public class MainActivity extends AppCompatActivity {
         } else return "";
     }
 
-
     /**
-     * Assembles the text to fill the String of the order summary
-     *
-     * @param subTotal the total price as previously calculated
-     * @return the String with the complete order summary
-     */
-    public String createOrderSummary(int subTotal) {
-        return "Name: " + "g-User #000023\n"
-                + option2Summary()
-                + "Quantity: " + quantity + "\n"
-                + option1Summary()
-                + "Total: " + subTotal + "\n"
-                + "Thank you";
-    }
-
-    /**
-     * This is mostly unnecessary because these args are global variables
+     * This method calculates the subtotal of the order based on selection options
      *
      * @param howMany   the quantity being ordered
      * @param howMuch   the price per each unit
      * @return (int) sum total of calculated price
      */
     private int calculatePrice(int howMany, int howMuch) {
-        return howMuch * howMany;
+        int subTotal = howMany * howMuch;
+        if (!option1) {
+            subTotal = subTotal / 100 + 1;
+        }
+        if (option2) {
+            subTotal += 12000;
+        }
+        /* convert from XEM to USD:
+        subTotal = subTotal * XEM_PRICE_FACTOR;
+         */
+        return subTotal;
     }
 
     /**
