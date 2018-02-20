@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <EditText
@@ -16,13 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:hint="Name" />
+            android:hint="@string/name" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Initial Coin Offering Purchase"
+            android:text="@string/title"
             android:textAllCaps="true" />
 
         <LinearLayout
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="24dp"
-                android:text="Brass Tokens"
+                android:text="@string/bronze_coins"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -61,7 +61,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="24dp"
-                android:text="Investor Package"
+                android:layout_marginStart="24dp"
+                android:text="@string/investor_package"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -71,13 +72,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:paddingTop="8dp"
-            android:text="Quantity:"
+            android:text="@string/quantity"
             android:textAllCaps="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- TODO: I want to be able to longPress or something on these button to rapid-fire-->
             <Button
                 android:layout_width="48dp"
                 android:layout_height="48dp"
@@ -104,27 +106,11 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="Order summary: "
-            android:textAllCaps="true" />
-
-        <TextView
-            android:id="@+id/order_summary_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="$0"
-            android:textColor="@android:color/black"
-            android:textSize="16sp" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:onClick="submitOrder"
-            android:text="Order" />
+            android:text="@string/order" />
     </LinearLayout>
 </ScrollView>

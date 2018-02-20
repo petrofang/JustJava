@@ -1,7 +1,10 @@
 package com.example.android.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -36,14 +39,13 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * when the Order button is clicked...
-     *      do the math
-     *      build the string using the math
-     *      display the string
+     * do the math
+     * build the string using the math
+     * display the string
      *
      * @param view the view that called it, I think? the Order button?
      */
     public void submitOrder(View view) {
-        /*  */
         CheckBox checkBox = findViewById(R.id.cbOption1);
         option1 = checkBox.isChecked();
         checkBox = findViewById(R.id.cbOption2);
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         int subTotal = calculatePrice(quantity, pricePer);
         String orderSummary = createOrderSummary(subTotal);
-        displayMessage(orderSummary);
+        dispatchMessage(orderSummary);
     }
 
 
@@ -76,9 +78,16 @@ public class MainActivity extends AppCompatActivity {
      * @return a string fragment to add to the order summary
      */
     private String option1Summary() {
+        String summary = "Form factor: ";
         if (option1) {
-            return "form factor: Bronzed coins\n";
-        } else return "form factor: Wooden coins\n";
+
+            summary += (R.string.bronze_coins);
+        } else {
+            summary += (R.string.wooden_tokens);
+        }
+        summary += "\n";
+        return summary;
+
     }
 
     /**
@@ -136,11 +145,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method displays the given text on the screen.
+     * This method sends an email with the assembled String message
+     *
+     * @param message the assembled String message
      */
-    private void displayMessage(String message) {
-        TextView OrderSummaryTextView = findViewById(R.id.order_summary_text_view);
-        OrderSummaryTextView.setText(message);
+    private void dispatchMessage(String message) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "gUnit order");
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, R.string.no_email_client, Toast.LENGTH_SHORT).show();
+            Log.e("dispatchMessage", "No \"mailto:\" handler found.");
+        }
     }
 
     /**
@@ -166,6 +185,4 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "gUnit sales are locked (no inversion)", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }

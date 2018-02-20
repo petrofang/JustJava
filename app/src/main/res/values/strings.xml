@@ -1,4 +1,12 @@
 <resources>
-    <string name="app_name">gU wallet ver. 0.0.00001</string>
+    <string name="app_name">g-Unit ICO App</string>
+    <string name="order">Order</string>
     <string name="price_message">Unit purchase: gU.</string>
+    <string name="name">Name</string>
+    <string name="title">g-Unit Initial Coin Offering</string>
+    <string name="bronze_coins">bronze coins</string>
+    <string name="investor_package">XEM investor package</string>
+    <string name="quantity">Quantity:</string>
+    <string name="wooden_tokens">wooden tokens</string>
+    <string name="no_email_client">Email client required</string>
 </resources>
