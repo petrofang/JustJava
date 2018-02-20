@@ -1,6 +1,5 @@
 package com.example.android.justjava;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
      */
     int quantity = 0;
     int pricePer = 5;
-//  final int XEM_PRICE_FACTOR = 1;
-boolean option1;
+    //  final int XEM_PRICE_FACTOR = 1;
+    boolean option1;
     boolean option2;
 
 
@@ -37,9 +36,9 @@ boolean option1;
 
     /**
      * when the Order button is clicked...
-     *      do the math
-     *      build the string using the math
-     *      display the string
+     * do the math
+     * build the string using the math
+     * display the string
      *
      * @param view the view that called it, I think? the Order button?
      */
@@ -65,7 +64,7 @@ boolean option1;
     public String createOrderSummary(int subTotal) {
         return nameSummary()
                 + option2Summary()
-                + quantity + " Coin generated.." + "\n"
+                + quantity + " coin generated.." + "\n"
                 + option1Summary()
                 + "Total: " + subTotal + " XEM\n"
                 + "Thank you";
@@ -109,8 +108,8 @@ boolean option1;
     /**
      * This method calculates the subtotal of the order based on selection options
      *
-     * @param howMany   the quantity being ordered
-     * @param howMuch   the price per each unit
+     * @param howMany the quantity being ordered
+     * @param howMuch the price per each unit
      * @return (int) sum total of calculated price
      */
     private int calculatePrice(int howMany, int howMuch) {
@@ -131,8 +130,9 @@ boolean option1;
      * This method displays the given quantity value on the screen.
      */
     private void displayQuantity(int howMany) {
+        String string = "" + howMany;
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + howMany);
+        quantityTextView.setText(string);
     }
 
     /**
