@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">g-Unit ICO App</string>
     <string name="order">Order</string>
-    <string name="price_message">Unit purchase: gU.</string>
+    <string name="price_message">Unit purchase</string>
     <string name="name">Name</string>
     <string name="title">g-Unit Initial Coin Offering</string>
     <string name="bronze_coins">bronze coins</string>
