@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * when the Order button is clicked...
-     * do the math
-     * build the string using the math
-     * display the string
+     *      do the math
+     *      build the string using the math
+     *      display the string
      *
      * @param view the view that called it, I think? the Order button?
      */
