@@ -109,9 +109,8 @@ public class MainActivity extends AppCompatActivity {
     private String option2Summary() {
         CheckBox checkBox = findViewById(R.id.cbOption2);
         boolean option2 = checkBox.isChecked();
-        if (option2) {
-            return "Investor Package selected! Dividend > 4% APY\n";
-        } else return "";
+        if (option2) return getResources().getString(R.string.investor_package) + "\n";
+        else return "";
     }
 
     /**
@@ -185,7 +184,8 @@ public class MainActivity extends AppCompatActivity {
             quantity--;
             displayQuantity(quantity);
         } else {
-            Toast.makeText(this, "gUnit sales are locked (no inversion)", Toast.LENGTH_SHORT).show();
+            String min_0 = getResources().getString(R.string.min_0);
+            Toast.makeText(this, min_0, Toast.LENGTH_SHORT).show();
         }
     }
 }

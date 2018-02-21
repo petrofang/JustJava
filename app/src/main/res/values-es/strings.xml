@@ -2,14 +2,15 @@
 <resources>
     <string name="app_name">g-Unit ICO App</string>
 
-    <!-- translate this stuff -->
     <string name="order">Orden</string>
-    <string name="price_message">Unit purchase: gU.</string>
+    <string name="price_message">Unito tipo: G.</string>
     <string name="name">Nombre</string>
-    <string name="title">g-Unit Initial Coin Offering</string>
+    <string name="title">Compra monero de Gallina</string>
     <string name="bronze_coins">monedas bronceadas</string>
     <string name="investor_package">Paquete inversor XEM</string>
     <string name="quantity">Quantity:</string>
     <string name="wooden_tokens">fichas de madera</string>
     <string name="no_email_client">Se requiere cliente de correo electrónico</string>
+    <string name="max_100">no puedo mas de siento</string>
+    <string name="min_0">no puede vendar, dalbes tarde</string>
 </resources>

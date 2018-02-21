@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- TODO: as a challenge, use the <xdiff:g> tag for complex string resources -->
+    <!-- TODO: to practice form, comment each of these with the proper format for translation -->
+
     <string name="app_name">g-Unit ICO App</string>
     <string name="order">Order</string>
     <string name="price_message">Unit purchase</string>
@@ -10,5 +13,6 @@
     <string name="quantity">Quantity:</string>
     <string name="wooden_tokens">wooden tokens</string>
     <string name="no_email_client">Email client required</string>
-    <string name="max_100">"Current Max: 100 gUnit"</string>
+    <string name="max_100">Current Max: 100 gUnit</string>
+    <string name="min_0">inversion is not currently available</string>
 </resources>
