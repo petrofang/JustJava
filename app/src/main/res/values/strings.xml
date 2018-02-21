@@ -9,4 +9,5 @@
     <string name="quantity">Quantity:</string>
     <string name="wooden_tokens">wooden tokens</string>
     <string name="no_email_client">Email client required</string>
+    <string name="max_100">"Current Max: 100 gUnit"</string>
 </resources>
