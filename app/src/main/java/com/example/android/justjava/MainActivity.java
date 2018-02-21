@@ -78,12 +78,12 @@ public class MainActivity extends AppCompatActivity {
      * @return a string fragment to add to the order summary
      */
     private String option1Summary() {
-        String summary = "Form factor: ";
+        String summary = "Form: ";
         if (option1) {
 
-            summary += (R.string.bronze_coins);
+            summary += getResources().getString(R.string.bronze_coins);
         } else {
-            summary += (R.string.wooden_tokens);
+            summary += getResources().getString(R.string.wooden_tokens);
         }
         summary += "\n";
         return summary;
@@ -157,7 +157,8 @@ public class MainActivity extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         } else {
-            Toast.makeText(this, R.string.no_email_client, Toast.LENGTH_SHORT).show();
+            String noEmailClient = getResources().getString(R.string.no_email_client);
+            Toast.makeText(this, noEmailClient, Toast.LENGTH_SHORT).show();
             Log.e("dispatchMessage", "No \"mailto:\" handler found.");
         }
     }
@@ -170,7 +171,9 @@ public class MainActivity extends AppCompatActivity {
             ++quantity;
             displayQuantity(quantity);
         } else {
-            Toast.makeText(this, "Current Max: 100 gUnit", Toast.LENGTH_SHORT).show();
+            String max_100 = getResources().getString(R.string.max_100);
+
+            Toast.makeText(this, max_100, Toast.LENGTH_SHORT).show();
         }
     }
 
